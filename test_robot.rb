@@ -58,39 +58,43 @@ class TestRobot < MiniTest::Test
   end
 
   def test_prioritize_tasks_with_empty_todo_list_returns_negative_one
-    skip
     # arrange
-
+    robot = Robot.new
+    robot.todos = []
     # act
-
+    var = robot.prioritize_tasks
     # assert
+    assert_equal(-1, var)
   end
 
   def test_prioritize_tasks_with_todos_returns_max_todo_value
-    skip
     # arrange
-
+    robot = Robot.new
+    robot.todos = [1, 2, 3]
     # act
-
+    var = robot.prioritize_tasks
     # assert
+    assert_equal(3, var)
   end
 
   def test_workday_on_day_off_returns_true
-    skip
     # arrange
-
+    robot = Robot.new
+    robot.day_off = "saturday"
     # act
-
+    var = robot.workday?("wednesday")
     # assert
+    assert_equal(var, true)
   end
 
   def test_workday_not_day_off_returns_false
-    skip
     # arrange
-
+    robot = Robot.new
+    robot.day_off = "wednesday"
     # act
-
+    var = robot.workday?("wednesday")
     # assert
+    assert_equal(var, false)
   end
 
 end
